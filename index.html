@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScienceMadeEasy GH - JHS Science</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🔬 ScienceMadeEasy GH</h1>
+  <p>JHS Science explained in simple English + examples from Ghana</p>
+  <input type="text" id="search" placeholder="Search topic e.g. plasma, BEC...">
+</header>
+
+<section class="hero">
+  <h2>Topic of the week: States of Matter</h2>
+  <p>From ice block to the sun -- all matter in 4 minutes.</p>
+  <button onclick="scrollToTopics()">Start Learning</button>
+</section>
+
+<main id="topics" class="grid">
+  <!-- Cards will be injected by JS -->
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+    <div id="modalExample"></div>
+  </div>
+</div>
+
+<footer>
+  <p>Built in Accra 🇬🇭 | Contact: WhatsApp to order full notes (GHS 20)</p>
+  <a href="https://wa.me/233000000000?text=Hi%20I%20want%20JHS%20Science%20notes" class="wa-btn">Order Notes via WhatsApp</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
