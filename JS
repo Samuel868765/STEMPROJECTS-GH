@@ -1,0 +1,77 @@
+const topics = [
+  {
+    title: "Solid",
+    tag: "BECE Topic",
+    short: "Fixed shape. Atoms locked tight.",
+    long: "Atoms are tightly packed and only vibrate. Keeps shape no matter the container.",
+    example: "Examples: Ice block, stone, table, kenkey. 🧊"
+  },
+  {
+    title: "Liquid",
+    tag: "BECE Topic",
+    short: "Flows. Takes shape of container.",
+    long: "Atoms are close but can slide over each other. That is why water flows.",
+    example: "Examples: Water, palm oil, sobolo, blood."
+  },
+  {
+    title: "Gas",
+    tag: "BECE Topic",
+    short: "No shape. Spreads everywhere.",
+    long: "Atoms far apart and move very fast. Fills any container you put it in.",
+    example: "Examples: Steam from jollof, air, LPG from blue cylinder."
+  },
+  {
+    title: "Plasma",
+    tag: "SHS + WASSCE",
+    short: "Super-hot gas that glows. Most common in space.",
+    long: "If you heat gas too much, electrons break off. The gas becomes plasma and conducts electricity and glows.",
+    example: "Examples: Sun, stars, lightning ⚡, neon light."
+  },
+  {
+    title: "BEC - Bose-Einstein Condensate",
+    tag: "Bonus: Coldest matter",
+    short: "The coldest matter: -273°C. Atoms become one super-atom.",
+    long: "BEC is made in labs near absolute zero. All atoms stop moving separately and act like ONE giant atom. It has zero friction and climbs walls!",
+    example: "Made in 1995 by scientists. Won Nobel Prize. Only in advanced labs, not in nature."
+  }
+];
+
+const grid = document.getElementById('topics');
+const search = document.getElementById('search');
+const modal = document.getElementById('modal');
+
+function render(list){
+  grid.innerHTML = "";
+  list.forEach((t,i)=>{
+    grid.innerHTML += `
+      <div class="card" onclick="openModal(${i})">
+        <span class="tag">${t.tag}</span>
+        <h3>${t.title}</h3>
+        <p>${t.short}</p>
+      </div>
+    `;
+  });
+}
+render(topics);
+
+function openModal(i){
+  const t = topics[i];
+  document.getElementById('modalTitle').innerText = t.title;
+  document.getElementById('modalText').innerText = t.long;
+  document.getElementById('modalExample').innerText = t.example;
+  modal.classList.remove('hidden');
+}
+document.getElementById('closeModal').onclick = ()=> modal.classList.add('hidden');
+modal.onclick = (e)=> { if(e.target==modal) modal.classList.add('hidden'); }
+
+search.addEventListener('input', e=>{
+  const q = e.target.value.toLowerCase();
+  const filtered = topics.filter(t =>
+    t.title.toLowerCase().includes(q) || t.short.toLowerCase().includes(q)
+  );
+  render(filtered);
+});
+
+function scrollToTopics(){
+  document.getElementById('topics').scrollIntoView({behavior:'smooth'});
+}
